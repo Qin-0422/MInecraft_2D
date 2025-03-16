@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/back">
+        <file>img/background/IntiBackground.png</file>
+    </qresource>
+    <qresource prefix="/init">
+        <file>img/init/Minecraft.png</file>
+        <file>img/init/Init_Archive.jpg</file>
+        <file>img/init/Init_Help.jpg</file>
+        <file>img/init/Init_NewWorld.jpg</file>
+        <file>img/init/difficult.png</file>
+        <file>img/init/easy.png</file>
+        <file>img/init/Exit.jpg</file>
+    </qresource>
+    <qresource prefix="/level_1">
+        <file>img/block/Cobblestone.png</file>
+        <file>img/block/Crafting_Table.png</file>
+        <file>img/block/grass.jpg</file>
+        <file>img/block/Log.png</file>
+        <file>img/block/Planks.png</file>
+        <file>img/block/soil.png</file>
+        <file>img/block/bedrock.jpg</file>
+    </qresource>
+</RCC>

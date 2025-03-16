@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\Widget.o
+./debug\Init.o
+./debug\BeginInterface.o
+./debug\HelpInterface.o
+./debug\ArchiveInterface.o
+./debug\Level_Map.o
+./debug\Map_Level_1.o
+./debug\qrc_img_back.o
+./debug\moc_Widget.o
+);
