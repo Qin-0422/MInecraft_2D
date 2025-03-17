@@ -14,6 +14,9 @@ enum Map_1_Element
     soil,
     grass,
     Cobblestone,//原石
+    Log,
+    leaf,
+    Plank,
 };
 
 class Map_Level_1
@@ -22,6 +25,9 @@ public:
     Map_Level_1();
     //void DrawMap();
     ~Map_Level_1();
+    bool isRoad(int x, int y) const;
+    void moveSteve(int deltaX, int deltaY);
+
     QGraphicsScene* level_1_Scene;
 private:
     Level_Map* m_l1_Map;

@@ -20,6 +20,7 @@
         <file>img/block/soil.png</file>
         <file>img/block/bedrock.jpg</file>
         <file>img/block/Road.png</file>
+        <file>img/block/leaf.png</file>
     </qresource>
     <qresource prefix="/Steve">
         <file>img/character/Steve/Steve_Right.png</file>

@@ -1,4 +1,5 @@
 #include "Steve.h"
+#include "Map_Level_1.h"
 #include <QDebug>
 Steve::Steve()
 {
@@ -18,6 +19,7 @@ Steve::Steve()
        m_SteveMoveTimer->start(10);  // 每10毫秒触发一次SteveMove
        QGraphicsPixmapItem::setFlag(QGraphicsItem::ItemIsFocusable);
           QGraphicsPixmapItem::setFocus();
+           m_map = nullptr;  // 初始化地图指针
 }
 
 void Steve::keyPressEvent(QKeyEvent *event)
@@ -39,26 +41,45 @@ void Steve::keyReleaseEvent(QKeyEvent *event)
         mKeyList.removeOne(event->key());
     }
 }
-void Steve::SteveMove()
+bool Steve::canMoveTo(int newX, int newY)
 {
-    for(int KeyCode :mKeyList)
-    {
-        switch (KeyCode)
-        {
-        case Qt::Key_A:this->moveBy(-1*this->m_MoveSpeed,0);
-            break;
-        case Qt::Key_D:this->moveBy(1*this->m_MoveSpeed,0);
-            break;
-        case Qt::Key_W:
-        {
-            break;
-        }
-        case Qt::Key_S:
-        {
-            break;
-        }
-        default:
-            break;
+    // 检查目标位置的包围盒是否都在 Road 上
+    int width = pixmap().width();
+    int height = pixmap().height();
+    for (int x = newX; x < newX + width; ++x) {
+        for (int y = newY; y < newY + height; ++y) {
+            if (!m_map->isRoad(x, y)) {
+                return false;
+            }
         }
     }
+    return true;
+}
+void Steve::SteveMove()
+{
+    if (!m_map) return;  // 如果地图未设置，则不进行移动
+    for(int KeyCode :mKeyList)
+    {
+        int deltaX = 0;
+        int deltaY = 0;
+        switch (KeyCode)
+        {
+               case Qt::Key_A: deltaX = -m_MoveSpeed; break;
+               case Qt::Key_D: deltaX = m_MoveSpeed; break;
+               case Qt::Key_W:  break;
+               case Qt::Key_S:  break;
+               default: break;
+        }
+        int newX = QGraphicsItem::x() + deltaX;
+        int newY = QGraphicsItem::y() + deltaY;
+
+        if (canMoveTo(newX, newY))  // 使用 canMoveTo 函数进行碰撞检测
+        {
+            moveBy(deltaX, deltaY);
+        }
+    }
+}
+void Steve::setMap(Map_Level_1 *map)
+{
+    m_map = map;
 }
