@@ -7,6 +7,9 @@ INPUT(
 ./debug\ArchiveInterface.o
 ./debug\Level_Map.o
 ./debug\Map_Level_1.o
+./debug\Character.o
+./debug\Steve.o
 ./debug\qrc_img_back.o
 ./debug\moc_Widget.o
+./debug\moc_Character.o
 );

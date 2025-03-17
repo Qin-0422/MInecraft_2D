@@ -32,7 +32,9 @@ SOURCES += \
     HelpInterface.cpp \
     ArchiveInterface.cpp \
     Level_Map.cpp \
-    Map_Level_1.cpp
+    Map_Level_1.cpp \
+    Character.cpp \
+    Steve.cpp
 
 HEADERS += \
         Widget.h \
@@ -41,7 +43,9 @@ HEADERS += \
     HelpInterface.h \
     ArchiveInterface.h \
     Level_Map.h \
-    Map_Level_1.h
+    Map_Level_1.h \
+    Character.h \
+    Steve.h
 
 FORMS += \
         widget.ui

@@ -8,10 +8,6 @@ Map_Level_1::Map_Level_1()
     filePath = "../Map/level_1.txt";
     map_1 = m_l1_Map->InitByFile(filePath);
 
-}
-
-void Map_Level_1::DrawMap()
-{
     int tileSize = 50;
     for(int row = 0;row<map_1.size();++row)
     {
@@ -23,35 +19,40 @@ void Map_Level_1::DrawMap()
             case bedrock:
             {
                 QPixmap pixmap(":/level_1/img/block/bedrock.jpg");
-                QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(pixmap, tile);
-                level_1_Scene->addItem(tile);
+                QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(pixmap);
+                pixmapItem->setPos(col*tileSize,row*tileSize);
+                level_1_Scene->addItem(pixmapItem);
                 break;
             }
             case Road:
             {
-                QPixmap pixmap("  ");
-                QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(pixmap, tile);
+                QPixmap pixmap(":/level_1/img/block/Road.png");
+                QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(pixmap);
+                pixmapItem->setPos(col*tileSize,row*tileSize);
                 level_1_Scene->addItem(pixmapItem);
                 break;
             }
             case soil:
             {
                 QPixmap pixmap(":/level_1/img/block/soil.png");
-                QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(pixmap, tile);
+                QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(pixmap);
+                pixmapItem->setPos(col*tileSize,row*tileSize);
                 level_1_Scene->addItem(pixmapItem);
                 break;
             }
             case grass:
             {
                 QPixmap pixmap(":/level_1/img/block/grass.jpg");
-                QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(pixmap, tile);
+                QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(pixmap);
+                pixmapItem->setPos(col*tileSize,row*tileSize);
                 level_1_Scene->addItem(pixmapItem);
                 break;
             }
             case Cobblestone:
             {
                 QPixmap pixmap(":/level_1/img/block/Cobblestone.png");
-                QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(pixmap, tile);
+                QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(pixmap);
+                pixmapItem->setPos(col*tileSize,row*tileSize);
                 level_1_Scene->addItem(pixmapItem);
                 break;
             }
@@ -60,7 +61,13 @@ void Map_Level_1::DrawMap()
         }
     }
 
+    m_Steve.setX(50);
+    m_Steve.setY(950);
+    level_1_Scene->addItem(&m_Steve);
+
 }
+
+
 Map_Level_1::~Map_Level_1()
 {
     delete  m_l1_Map;

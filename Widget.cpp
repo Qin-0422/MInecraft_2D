@@ -47,6 +47,9 @@ Widget::Widget(QWidget *parent) :
         m_view->show();
     });
 
+
+
+
     ui->setupUi(this);
 }
 

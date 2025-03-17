@@ -3,11 +3,13 @@
 
 #include <QWidget>
 #include <QGraphicsView>
+
 #include "Init.h"
 #include "BeginInterface.h"
 #include "ArchiveInterface.h"
 #include "HelpInterface.h"
 #include "Map_Level_1.h"
+#include "Steve.h"
 namespace Ui {
 class Widget;
 }
@@ -26,6 +28,7 @@ private:
     Archive m_Archive;
     HelpInterface m_HelpInterface;
     Map_Level_1 m_Map_1;
+
 
 
 

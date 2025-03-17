@@ -19,5 +19,10 @@
         <file>img/block/Planks.png</file>
         <file>img/block/soil.png</file>
         <file>img/block/bedrock.jpg</file>
+        <file>img/block/Road.png</file>
+    </qresource>
+    <qresource prefix="/Steve">
+        <file>img/character/Steve/Steve_Right.png</file>
+        <file>img/character/Steve/Steve_front.png</file>
     </qresource>
 </RCC>
