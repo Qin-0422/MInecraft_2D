@@ -31,7 +31,7 @@ public:
     QGraphicsScene* level_1_Scene;
 private:
     Level_Map* m_l1_Map;
-    QString filePath ;    
+    QString filePath ;
     vector<vector<int>> map_1;
 
     Steve m_Steve;

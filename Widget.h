@@ -31,7 +31,6 @@ private:
 
 
 
-
 private:
     Ui::Widget *ui;
 };
