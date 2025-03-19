@@ -7,6 +7,18 @@
 #include <QTextStream>
 #include <QGraphicsRectItem>
 using namespace  std;
+enum Map_Element
+{
+    bedrock,
+    Road,
+    soil,
+    grass,
+    Cobblestone,//原石
+    Log,
+    leaf,
+    Plank,
+    Stone,
+};
 
 class Level_Map
 {

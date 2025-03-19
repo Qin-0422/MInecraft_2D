@@ -108,14 +108,7 @@ bool Map_Level_1::isRoad(int x, int y) const
     return false;
 }
 
-void Map_Level_1::moveSteve(int deltaX, int deltaY)
-{
-    int newX = m_Steve.QGraphicsItem::x() + deltaX;
-    int newY = m_Steve.QGraphicsItem::y() + deltaY;
 
-    if (isRoad(newX, newY)) {
-        m_Steve.setX(newX);
-        m_Steve.setY(newY);
-    }
 
-}
+
+

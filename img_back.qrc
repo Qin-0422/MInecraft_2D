@@ -26,4 +26,13 @@
         <file>img/character/Steve/Steve_Right.png</file>
         <file>img/character/Steve/Steve_front.png</file>
     </qresource>
+    <qresource prefix="/level_2">
+        <file>img/block/bedrock.jpg</file>
+        <file>img/block/Cobblestone.png</file>
+        <file>img/block/Crafting_Table.png</file>
+        <file>img/block/Planks.png</file>
+        <file>img/block/Road.png</file>
+        <file>img/block/soil.png</file>
+        <file>img/block/Stone.png</file>
+    </qresource>
 </RCC>

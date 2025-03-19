@@ -9,6 +9,8 @@ INPUT(
 ./debug\Map_Level_1.o
 ./debug\Character.o
 ./debug\Steve.o
+./debug\Map_Level_2.o
+./debug\Map_Change.o
 ./debug\qrc_img_back.o
 ./debug\moc_Widget.o
 ./debug\moc_Character.o

@@ -9,6 +9,8 @@ INPUT(
 ./release\Map_Level_1.o
 ./release\Character.o
 ./release\Steve.o
+./release\Map_Level_2.o
+./release\Map_Change.o
 ./release\qrc_img_back.o
 ./release\moc_Widget.o
 ./release\moc_Character.o
