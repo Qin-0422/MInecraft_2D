@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <vector>
 #include <QTextStream>
+#include <QGraphicsScene>
 #include <QGraphicsRectItem>
 using namespace  std;
 enum Map_Element
@@ -24,7 +25,9 @@ class Level_Map
 {
 public:
     Level_Map();
+    virtual ~Level_Map() = default;
     vector<vector<int>> InitByFile(const QString &filePath);
+    virtual bool isRoad(int x, int y) const = 0;
+    virtual QGraphicsScene* getScene() const = 0;
 };
-
 #endif // LEVEL_1_MAP_H

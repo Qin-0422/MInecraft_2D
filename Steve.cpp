@@ -62,9 +62,12 @@ bool Steve::canMoveTo(int newX, int newY)
     // 检查目标位置的包围盒是否都在 Road 上
     int width = pixmap().width();
     int height = pixmap().height();
-    for (int x = newX; x < newX + width; ++x) {
-        for (int y = newY; y < newY + height; ++y) {
-            if (!m_map->isRoad(x, y)) {
+    for (int x = newX; x < newX + width; ++x)
+    {
+        for (int y = newY; y < newY + height; ++y)
+        {
+            if (!m_map->isRoad(x, y))
+            {
                 return false;
             }
         }
@@ -144,7 +147,7 @@ void Steve::SteveMove()
     }
 }
 
-void Steve::setMap(Map_Level_1 *map)
+void Steve::setMap(Level_Map *map)
 {
     m_map = map;
 }

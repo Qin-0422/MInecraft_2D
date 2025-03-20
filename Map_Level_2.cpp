@@ -3,7 +3,7 @@
 Map_Level_2::Map_Level_2()
 {
     //初始化地图元素
-    m_l2_Map = new Level_Map;
+    m_l2_Map = new Level_Map_Impl; // 创建实现类的实例
     level_2_Scene = new QGraphicsScene;
     filePath = "../Map/level_2.txt";
     map_2 = m_l2_Map->InitByFile(filePath);
@@ -81,7 +81,7 @@ Map_Level_2::Map_Level_2()
     m_Steve.setX(300);
     m_Steve.setY(950);
     level_2_Scene->addItem(&m_Steve);
-    //m_Steve.setMap_2(this);  // 设置Steve的地图指针
+    m_Steve.setMap(this);  // 设置Steve的地图指针
 }
 
 Map_Level_2::~Map_Level_2()

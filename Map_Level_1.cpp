@@ -3,7 +3,7 @@
 Map_Level_1::Map_Level_1()
 {
     //初始化地图元素
-    m_l1_Map = new Level_Map;
+    m_l1_Map =  new Level_Map_Impl;
     level_1_Scene = new QGraphicsScene;
     filePath = "../Map/level_1.txt";
     map_1 = m_l1_Map->InitByFile(filePath);
