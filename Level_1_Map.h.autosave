@@ -1,0 +1,28 @@
+#ifndef LEVEL_1_MAP_H
+#define LEVEL_1_MAP_H
+#include <QObject>
+#include <QFile>
+#include <QDebug>
+enum Map_1_Element
+{
+    bedrock,//基岩    
+    Road,
+    soil,
+    grass,
+    Cobblestone,//原石
+};
+
+class Level_1_Map
+{
+public:
+    Level_1_Map();
+    bool InitByFile(QString fileName);
+
+    int m_Row;
+    int m_Col;
+    int ** mPArr;//开辟二维数组地图元素
+    void Clear();
+    ~Level_1_Map();
+};
+
+#endif // LEVEL_1_MAP_H

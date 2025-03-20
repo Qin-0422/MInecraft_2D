@@ -1,0 +1,50 @@
+#include "Level_1_Map.h"
+
+
+
+Level_1_Map::Level_1_Map()
+{
+    m_Row = 0;
+    m_Col = 0;
+    mPArr =nullptr;
+    
+}
+void Level_1_Map::Clear()
+{
+    if(mPArr!=nullptr)
+    {
+        for(int i =0;i<m_Row;i++)
+        {
+            delete []mPArr[i];
+        }
+        delete [] mPArr;
+    }
+}
+bool Level_1_Map::InitByFile(QString fileName)
+{
+    QFile file(fileName);
+    if(!file.open(QIODevice::ReadOnly))
+    {
+        return false;
+    }
+    QByteArray arrAll = file.readAll();
+    arrAll.replace("\r\n","\n");
+    QList<QByteArray> lineList =  arrAll.split('\n');
+    m_Row = lineList.size();//确定行
+
+    mPArr = new int*[m_Row];
+    for (int i =0;i<m_Row;i++)
+    {
+        QList<QByteArray> colList = lineList[i].split(',');
+        m_Col = colList.size();//确定列
+         mPArr[i]= new int[m_Col];
+         for(int j=0;j<m_Col;j++)
+         {
+             mPArr[i][j] = colList[j].toInt();
+         }
+    }
+}
+Level_1_Map::~Level_1_Map()
+{
+ Clear();
+}
