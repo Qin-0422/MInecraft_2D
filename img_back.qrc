@@ -21,6 +21,7 @@
         <file>img/block/bedrock.jpg</file>
         <file>img/block/Road.png</file>
         <file>img/block/leaf.png</file>
+        <file>img/block/TransmitBlock.png</file>
     </qresource>
     <qresource prefix="/Steve">
         <file>img/character/Steve/Steve_Right.png</file>
@@ -34,5 +35,10 @@
         <file>img/block/Road.png</file>
         <file>img/block/soil.png</file>
         <file>img/block/Stone.png</file>
+        <file>img/block/Launcher.jpg</file>
+        <file>img/block/MossyStone.jpg</file>
+        <file>img/block/Ladder.png</file>
+        <file>img/block/TransmitBlock.png</file>
+        <file>img/block/box.png</file>
     </qresource>
 </RCC>

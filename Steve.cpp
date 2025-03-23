@@ -28,6 +28,8 @@ Steve::Steve()
     QGraphicsPixmapItem::setFocus();
     m_map = nullptr;  // 初始化地图指针
 
+    // 连接位置改变信号到检测位置的槽函数
+    connect(this, &Steve::positionChanged, this, &Steve::checkPosition);
 }
 
 void Steve::keyPressEvent(QKeyEvent *event)
@@ -62,9 +64,30 @@ bool Steve::canMoveTo(int newX, int newY)
     // 检查目标位置的包围盒是否都在 Road 上
     int width = pixmap().width();
     int height = pixmap().height();
-    for (int x = newX; x < newX + width; ++x) {
-        for (int y = newY; y < newY + height; ++y) {
-            if (!m_map->isRoad(x, y)) {
+    for (int x = newX; x < newX + width; ++x)
+    {
+        for (int y = newY; y < newY + height; ++y)
+        {
+            if (!m_map->isRoad(x, y))
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool Steve::canFallTo(int newX, int newY)
+{
+    // 检查目标位置的包围盒是否在 Ladder 上
+    int width = pixmap().width();
+    int height = pixmap().height();
+    for (int x = newX; x < newX + width; ++x)
+    {
+        for (int y = newY; y < newY + height; ++y)
+        {
+            if (m_map->isLadder(x, y))
+            {
                 return false;
             }
         }
@@ -82,6 +105,7 @@ void Steve::jump()//跳跃函数
         {
             moveBy(0, -m_MoveSpeed);
             current_jumpHeight += m_MoveSpeed;
+            emit positionChanged(); // 触发位置改变信号
         }
         else//处理头顶碰方块
         {
@@ -105,9 +129,10 @@ void Steve::jump()//跳跃函数
 void Steve::fall()//下落函数
 {
     int newY = static_cast<int>(QGraphicsItem::y()) + m_MoveSpeed;
-    if (canMoveTo(static_cast<int>(QGraphicsItem::x()), newY))
+    if (canMoveTo(static_cast<int>(QGraphicsItem::x()), newY)&&canFallTo(static_cast<int>(QGraphicsItem::x()), newY))
     {
         moveBy(0, m_MoveSpeed);
+        emit positionChanged(); // 触发位置改变信号
     }
     else
     {
@@ -118,33 +143,57 @@ void Steve::fall()//下落函数
 
 }
 
+void Steve::climbLadder()
+{
+
+}
+
 void Steve::SteveMove()
 {
     if (!m_map) return;  // 如果地图未设置，则不进行移动
     for(int KeyCode :mKeyList)
     {
         int deltaX = 0;
-
+        int deltaY = 0;
         switch (KeyCode)
         {
-               case Qt::Key_A: deltaX = -m_MoveSpeed; break;
-               case Qt::Key_D: deltaX = m_MoveSpeed; break;
-
-
-
+        case Qt::Key_A: deltaX = -m_MoveSpeed; break;
+        case Qt::Key_D: deltaX = m_MoveSpeed; break;
+        case Qt::Key_W: deltaY = -m_MoveSpeed;break;
+        case Qt::Key_S: deltaY = m_MoveSpeed;break;
         }
         int newX = static_cast<int>(QGraphicsItem::x())  + deltaX;
-
+        int newY = static_cast<int>(QGraphicsItem::y())  + deltaY;
         if (canMoveTo(newX, static_cast<int>(QGraphicsItem::y())) ) // 使用 canMoveTo 函数进行碰撞检测
         {
                 moveBy(deltaX, 0);
-
+                emit positionChanged(); // 触发位置改变信号
         }
-
+        if(canMoveTo(static_cast<int>(QGraphicsItem::x()),newY)&&!canFallTo(static_cast<int>(QGraphicsItem::x()),newY))
+        {
+            moveBy(0, deltaY);
+            emit positionChanged(); // 触发位置改变信号
+        }
     }
 }
 
-void Steve::setMap(Map_Level_1 *map)
+void Steve::setMap(Level_Map *map)
 {
     m_map = map;
 }
+void Steve::checkPosition()
+{
+    int _x = static_cast<int>(QGraphicsItem::x());
+    int _y = static_cast<int>(QGraphicsItem::y());
+    if (m_map->isTransmit(_x,_y))
+    {
+        // 调用切换关卡的函数
+        emit changeLevel();
+    }
+    if(m_map->isTransmitBack(_x,_y))
+    {
+        // 调用切换关卡的函数
+        emit changeBackLevel();
+    }
+}
+

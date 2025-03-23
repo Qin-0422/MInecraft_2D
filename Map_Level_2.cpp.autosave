@@ -11,10 +11,10 @@ Map_Level_2::Map_Level_2()
     int tileSize = 50;
     for(int row = 0;row< map_2.size() ;++row)
     {
-        for(int col = 0;col<map_2[row].size();++col)
+        for(int col = 0;col<map_2[static_cast<std::vector<int>::size_type>(row)].size();++col)
         {
             QGraphicsRectItem *tile = new QGraphicsRectItem(col * tileSize, row * tileSize, tileSize, tileSize);
-            switch (map_2[row][col])
+            switch (map_2[static_cast<std::vector<int>::size_type>(row)][static_cast<std::vector<int>::size_type>(col)])
             {
             case bedrock:
             {
@@ -129,9 +129,9 @@ bool Map_Level_2::isRoad(int x, int y) const
 {
     int col = x / 50; // assuming tileSize is 50
     int row = y / 50;
-    if (row >= 0 && row < map_2.size() && col >= 0 && col < map_2[row].size())
+    if (row >= 0 && row < map_2.size() && col >= 0 && col < map_2[static_cast<std::vector<int>::size_type>(row)].size())
     {
-        return ( map_2[row][col] == 1||map_2[row][col] ==9||map_2[row][col] ==12||map_2[row][col] ==15);  // 修改为检查 map_1[row][col] 是否为 路,传送门，梯子
+        return ( map_2[static_cast<std::vector<int>::size_type>(row)][static_cast<std::vector<int>::size_type>(col)] == 1||map_2[static_cast<std::vector<int>::size_type>(row)][static_cast<std::vector<int>::size_type>(col)] ==9||map_2[static_cast<std::vector<int>::size_type>(row)][col] ==12||map_2[static_cast<std::vector<int>::size_type>(row)][static_cast<std::vector<int>::size_type>(col)] ==15);  // 修改为检查 map_1[row][col] 是否为 路,传送门，梯子
     }
     return false;
 }
@@ -139,9 +139,9 @@ bool Map_Level_2::isLadder(int x, int y) const
 {
     int col = x / 50; // assuming tileSize is 50
     int row = y / 50;
-    if (row >= 0 && row < map_2.size() && col >= 0 && col < map_2[row].size())
+    if (row >= 0 && row < map_2.size() && col >= 0 && col < map_2[static_cast<std::vector<int>::size_type>(row)].size())
     {
-        return map_2[row][col] ==12;  // 修改为检查 map_1[row][col] 是否为 梯子
+        return map_2[static_cast<std::vector<int>::size_type>(row)][static_cast<std::vector<int>::size_type>(col)] ==12;  // 修改为检查 map_1[row][col] 是否为 梯子
     }
     return false;
 }
@@ -149,8 +149,8 @@ bool Map_Level_2::isTransmit(int x, int y) const
 {
     int col = x / 50; // assuming tileSize is 50
     int row = y / 50;
-    if (row >= 0 && row < map_2.size() && col >= 0 && col < map_2[row].size()) {
-        return map_2[row][col] == 9;  // 修改为检查 map_1[row][col] 是否为 9
+    if (row >= 0 && static_cast<std::vector<int>::size_type>(row) < map_2.size() && col >= 0 && col < map_2[static_cast<std::vector<int>::size_type>(row)].size()) {
+        return map_2[static_cast<std::vector<int>::size_type>(row)][col] == 9;  // 修改为检查 map_1[row][col] 是否为 9
     }
     return false;
 }
@@ -158,8 +158,8 @@ bool Map_Level_2::isTransmitBack(int x, int y) const
 {
     int col = x / 50; // assuming tileSize is 50
     int row = y / 50;
-    if (row >= 0 && row < map_2.size() && col >= 0 && col < map_2[row].size()) {
-        return map_2[row][col] == 15;  // 修改为检查 map_1[row][col] 是否为 15
+    if (row >= 0 && static_cast<std::vector<int>::size_type>(row) < map_2.size() && col >= 0 && col < map_2[static_cast<std::vector<int>::size_type>(row)].size()) {
+        return map_2[static_cast<std::vector<int>::size_type>(row)][col] == 15;  // 修改为检查 map_1[row][col] 是否为 15
     }
     return false;
 }

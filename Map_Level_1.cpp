@@ -3,7 +3,7 @@
 Map_Level_1::Map_Level_1()
 {
     //初始化地图元素
-    m_l1_Map = new Level_Map;
+    m_l1_Map =  new Level_Map_Impl;
     level_1_Scene = new QGraphicsScene;
     filePath = "../Map/level_1.txt";
     map_1 = m_l1_Map->InitByFile(filePath);
@@ -80,7 +80,14 @@ Map_Level_1::Map_Level_1()
                 level_1_Scene->addItem(pixmapItem);
                 break;
             }
-
+            case TransmitBlock:
+            {
+                QPixmap pixmap(":/level_1/img/block/TransmitBlock.png");
+                QGraphicsPixmapItem *pixmapItem = new QGraphicsPixmapItem(pixmap);
+                pixmapItem->setPos(col*tileSize,row*tileSize);
+                level_1_Scene->addItem(pixmapItem);
+                break;
+            }
             }
         }
     }
@@ -102,12 +109,40 @@ bool Map_Level_1::isRoad(int x, int y) const
 {
     int col = x / 50; // assuming tileSize is 50
     int row = y / 50;
-    if (row >= 0 && row < map_1.size() && col >= 0 && col < map_1[row].size()) {
-        return map_1[row][col] == 1;  // 修改为检查 map_1[row][col] 是否为 1
+    if (row >= 0 && row < map_1.size() && col >= 0 && col < map_1[row].size())
+    {
+        return ( map_1[row][col] == 1||map_1[row][col] ==9||map_1[row][col] ==12);  // 修改为检查 map_1[row][col] 是否为 路,传送门，梯子
     }
     return false;
 }
-
+bool Map_Level_1::isLadder(int x, int y) const
+{
+    int col = x / 50; // assuming tileSize is 50
+    int row = y / 50;
+    if (row >= 0 && row < map_1.size() && col >= 0 && col < map_1[row].size())
+    {
+        return  map_1[row][col] == 12;  // 修改为检查 map_1[row][col] 是否为 梯子
+    }
+    return false;
+}
+bool Map_Level_1::isTransmit(int x, int y) const
+{
+    int col = x / 50; // assuming tileSize is 50
+    int row = y / 50;
+    if (row >= 0 && row < map_1.size() && col >= 0 && col < map_1[row].size()) {
+        return map_1[row][col] == 9;  // 修改为检查 map_1[row][col] 是否为 9
+    }
+    return false;
+}
+bool Map_Level_1::isTransmitBack(int x, int y) const
+{
+    int col = x / 50; // assuming tileSize is 50
+    int row = y / 50;
+    if (row >= 0 && row < map_1.size() && col >= 0 && col < map_1[row].size()) {
+        return map_1[row][col] == 15;  // 修改为检查 map_1[row][col] 是否为 15
+    }
+    return false;
+}
 
 
 

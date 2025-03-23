@@ -9,6 +9,7 @@
 #include "ArchiveInterface.h"
 #include "HelpInterface.h"
 #include "Map_Level_1.h"
+#include "Map_Level_2.h"
 #include "Steve.h"
 namespace Ui {
 class Widget;
@@ -28,7 +29,7 @@ private:
     Archive m_Archive;
     HelpInterface m_HelpInterface;
     Map_Level_1 m_Map_1;
-
+    Map_Level_2 m_Map_2;
 
 
 private:

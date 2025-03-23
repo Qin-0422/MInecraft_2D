@@ -36,7 +36,8 @@ SOURCES += \
     Character.cpp \
     Steve.cpp \
     Map_Level_2.cpp \
-    Map_Change.cpp
+    Level_Map_Impl.cpp \
+    Zombie.cpp
 
 HEADERS += \
         Widget.h \
@@ -49,7 +50,8 @@ HEADERS += \
     Character.h \
     Steve.h \
     Map_Level_2.h \
-    Map_Change.h
+    Level_Map_Impl.h \
+    Zombie.h
 
 FORMS += \
         widget.ui

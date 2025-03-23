@@ -47,8 +47,26 @@ Widget::Widget(QWidget *parent) :
         m_view->show();
     });
 
+    //从关卡1到关卡2
+    connect(&m_Map_1.m_Steve,&Steve::changeLevel,[this](){
+        m_view->setScene(m_Map_2.level_2_Scene);
+        m_Map_1.m_Steve.setX(100);
+        m_Map_1.m_Steve.setY(100);
+        m_view->show();
+    });
+    //从关卡2到关卡3
+//    connect(&m_Map_2.m_Steve,&Steve::changeLevel,[this](){
+//        m_view->setScene(m_Map_3 );
+//        m_view->show();
 
 
+    //从关卡2到关卡1
+    connect(&m_Map_2.m_Steve,&Steve::changeBackLevel,[this](){
+       m_view->setScene(m_Map_1.level_1_Scene);
+       m_Map_1.m_Steve.setX(1900);
+       m_Map_1.m_Steve.setY(1100);
+       m_view->show();
+    });
 
     ui->setupUi(this);
 }

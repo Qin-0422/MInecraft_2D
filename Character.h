@@ -1,12 +1,11 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include <QWidget>
 #include <QGraphicsScene>
 #include <QGraphicsItem>
-class Character : public QWidget
+class Character
 {
-    Q_OBJECT
+
 public:
     Character();
     Character( int health, int attackPower, int attackDistance_x,int attackDistance_y, int x, int y);
@@ -34,6 +33,8 @@ private:
     int m_AttackDistance_y;
     int m_x;
     int m_y;
+    bool isAlive() const;// 检查角色是否存活
+
 
 signals:
 

@@ -62,6 +62,10 @@ void Character::setPosition(int x, int y)
     this->m_x = x;
     this->m_y = y;
 }
+bool Character::isAlive() const// 检查角色是否存活
+{
+    return m_Health > 0;
+}
 
 
 
